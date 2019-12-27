@@ -1,0 +1,31 @@
+﻿@page
+@model FirstProject.Pages.Restaurants.AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<div class="row">
+	<div class="col-md-4">
+		<form method="post" asp-action="Add">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<label class="control-label" asp-for="Restoraunt.Id"></label>
+			<input class="form-control" asp-for="Restoraunt.Id" />
+			<span asp-validation-for="Restoraunt.Id" class="text-danger"></span>
+			<label class="control-label" asp-for="Restoraunt.Name"></label>
+			<input class="form-control" asp-for="Restoraunt.Name" />
+			<span asp-validation-for="Restoraunt.Name" class="text-danger"></span>
+			<label class="control-label" asp-for="Restoraunt.Location"></label>
+			<input class="form-control" asp-for="Restoraunt.Location" />
+			<span asp-validation-for="Restoraunt.Location" class="text-danger"></span>
+			<label class="control-label" asp-for="Restoraunt.Culsine"></label>
+			<select class="form-control" asp-for="Restoraunt.Culsine" asp-items="@Model.CulsineTypes">
+				<option value="">Select Culsine</option>
+			</select>
+			<span asp-validation-for="Restoraunt.Culsine" class="text-danger"></span>
+
+			<button class="btn btn-primary" type="submit">Save</button>
+		</form>
+	</div>
+</div>

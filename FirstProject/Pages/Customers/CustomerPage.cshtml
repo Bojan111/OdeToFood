@@ -1,0 +1,120 @@
+﻿@page
+@model FirstProject.Pages.Customers.CustomerPageModel
+@{
+	ViewData["Title"] = "CustomerPage";
+}
+
+<h1>CustomerPage</h1>
+
+
+
+<form method="get">
+	<div class="form-group">
+		<div class="input-group mb-3">
+			<input type="search" class="form-control" placeholder="search.." asp-for="SearchTerm">
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="submit" ><i class="fas fa-search"></i></button>
+			</div>
+		</div>
+	</div>
+</form>
+
+<table class="table">
+	<thead>
+	<th>
+		ID
+	</th>
+	<th>
+		FirstName
+	</th>
+	<th>
+		LastName
+	</th>
+	<th>
+		City
+	</th>
+	<th>
+		Country
+	</th>
+	</thead>
+	@foreach (var item in Model.Customer)
+	{
+		<tr>
+			<td>
+				@item.Id
+			</td>
+			<td>
+				@item.FirstName
+			</td>
+			<td>
+				@item.LastName
+			</td>
+			<td>
+				@item.City
+			</td>
+			<td>
+				@item.Country
+			</td>
+			<td>
+				<a class="btn btn-primary" asp-page="/Customers/CustomersDetails" asp-route-Id="@item.Id"><i class="fas fa-search"></i></a>
+				<a class="btn btn-primary" asp-page="/Customers/Edit" asp-route-Id="@item.Id"><i class="fas fa-edit"></i></a>
+			</td>
+			
+		</tr>
+	}
+</table>
+<h3>NEW TABLE</h3>
+<table class="table bg-info">
+	<thead>
+	<th>
+		ID
+	</th>
+	<th>
+		Model
+	</th>
+	<th>
+		Color
+	</th>
+	<th>
+		Year
+	</th>
+	</thead>
+	@foreach (var item in Model.Vehicle)
+	{
+		<tr>
+			<td>
+				@item.Id
+			</td>
+			<td>
+				@item.Model
+			</td>
+			<td>@item.Color</td>
+			<td>
+				@item.Year
+			</td>
+		</tr>
+	}
+</table>
+@foreach (var item in Model.Customer)
+{
+	<div class="row justify-content-center m-3">
+		<div class="col-sm-8">
+			<div class="card">
+				<div class="card-header">
+					<h1>@item.FirstName</h1>
+				</div>
+
+				<div class="card-body text-center">
+					<img class="card-img-top" src="~/img/bandMember.jpg" asp-append-version="true" />
+
+					<h4>Customers Id: @item.Id</h4>
+					<h4>Customers FirstName: @item.FirstName</h4>
+					<h4>Customers Country: @item.Country</h4>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+}
+

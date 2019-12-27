@@ -1,0 +1,36 @@
+﻿@page "{Id:int}"
+@model FirstProject.Pages.Restaurants.EditModel
+@{
+	ViewData["Title"] = "Edit";
+}
+
+
+
+<h1>Editin @Model.Restourant.Name</h1>
+
+<form method="post">
+	<input type="hidden" asp-for="Restourant.Id" />
+	<div class="form-group">
+		<label asp-for="Restourant.Name"></label>
+		<input class="form-control" asp-for="Restourant.Name" />
+		<span class="text-danger" asp-validation-for="Restourant.Name"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Restourant.Location"></label>
+		<input class="form-control" asp-for="Restourant.Location" />
+		<span class="text-danger" asp-validation-for="Restourant.Name"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Restourant.Culsine"></label>
+		<select class="form-control" asp-for="Restourant.Culsine" asp-items="@Model.CulsineTypes">
+			<option value="">Culsine Type</option>
+		</select>
+		<span class="text-danger" asp-validation-for="Restourant.Culsine"></span>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
+
+

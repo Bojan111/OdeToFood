@@ -1,0 +1,41 @@
+﻿@page "{Id:int}"
+@model FirstProject.Pages.Clients.EditModel
+@{
+	ViewData["Title"] = "Edit";
+}
+
+
+
+<h1>Editin @Model.Client.Name</h1>
+
+<form method="post">
+	<input type="hidden" asp-for="Client.Id" />
+	<div class="form-group">
+		<label asp-for="Client.Name"></label>
+		<input class="form-control" asp-for="Client.Name" />
+		<span class="text-danger" asp-validation-for="Client.Name"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Client.LastName"></label>
+		<input class="form-control" asp-for="Client.LastName" />
+		<span class="text-danger" asp-validation-for="Client.LastName"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Client.City"></label>
+		<select class="form-control" asp-for="Client.City" asp-items="@Model.CityTypes">
+			<option value="">None Type</option>
+		</select>
+		<span class="text-danger" asp-validation-for="Client.City"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Client.Country"></label>
+		<select class="form-control" asp-for="Client.Country" asp-items="@Model.CountryTypes">
+			<option value="">None Type</option>
+		</select>
+		<span class="text-danger" asp-validation-for="Client.Country"></span>
+	</div>
+	
+	<button type="submit" class="btn btn-primary">Save</button>
+</form>
+<a asp-page="./Client" class="btn btn-primary">Back to clients</a>
+

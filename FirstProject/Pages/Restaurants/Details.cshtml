@@ -1,0 +1,52 @@
+﻿@page "{Id:int}"
+@model FirstProject.Pages.Restaurants.DetailsModel
+@{
+	ViewData["Title"] = "Details";
+}
+
+
+<h1>Details</h1>
+
+<table class="table table-bordered col-6">
+	<tr>
+		<td class="font-weight-bold">
+			Restaurant Id
+		</td>
+		<td>
+			@Model.Restourant.Id
+		</td>
+	</tr>
+	<tr>
+		<td class="font-weight-bold">
+			Name
+		</td>
+		<td>
+			@Model.Restourant.Name
+		</td>
+	</tr>
+	<tr>
+		<td class="font-weight-bold">
+			Location
+		</td>
+		<td>
+			@Model.Restourant.Location
+		</td>
+	</tr>
+	<tr>
+		<td class="font-weight-bold">
+			Culsine
+		</td>
+		<td>
+			@Model.Restourant.Culsine
+		</td>
+	</tr>
+</table>
+
+<a asp-page="/Restaurants/List" class="btn btn-primary">Back</a>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+		<div class="alert alert-info">
+			@Model.Message
+		</div>
+}

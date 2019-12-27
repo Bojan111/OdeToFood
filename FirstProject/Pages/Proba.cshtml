@@ -1,0 +1,30 @@
+﻿@page
+@model FirstProject.Pages.ProbaModel
+@{
+    ViewData["Title"] = "Proba";
+}
+
+<ul>
+	@foreach (var item in todos)
+	{
+		<li>@item.Title</li>
+	}
+</ul>
+<input placeholder="Do something.." bind="@newTodo"/>
+<button onclick="AddTodo(FirstProject.Pages.AddTodo)">Add</button>
+
+@functions {
+	IList<ToDoItem> todos = new List<ToDoItem>();
+	string newTodo;
+
+	void AddTodo()
+	{
+		if (String.IsNullOrEmpty(newTodo))
+		{
+			todos.Add(new ToDoItem { Title = newTodo });
+			newTodo = null;
+		}
+	}
+
+}
+

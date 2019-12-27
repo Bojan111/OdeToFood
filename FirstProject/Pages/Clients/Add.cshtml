@@ -1,0 +1,35 @@
+﻿@page
+@model FirstProject.Pages.Clients.AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Add" method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<label class="control-label" asp-for="Client.Id"></label>
+			<input class="form-control" asp-for="Client.Id" />
+			<span asp-validation-for="Client.Id" class="text-danger"></span>
+			<label class="control-label" asp-for="Client.Name"></label>
+			<input class="form-control" asp-for="Client.Name" />
+			<span asp-validation-for="Client.Name" class="text-danger"></span>
+			<label class="control-label" asp-for="Client.LastName"></label>
+			<input class="form-control" asp-for="Client.LastName" />
+			<span asp-validation-for="Client.LastName" class="text-danger"></span>
+			<label class="control-label" asp-for="Client.City"></label>
+			<select class="form-control" asp-for="Client.City" asp-items="@Model.CityTypes">
+				<option value="">Select City</option>
+			</select>
+			<span asp-validation-for="Client.City" class="text-danger"></span>
+			<label class="control-label" asp-for="Client.Country"></label>
+			<select class="form-control" asp-for="Client.Country" asp-items="@Model.CountryTypes">
+				<option value="">Select Client</option>
+			</select>
+			<span asp-validation-for="Client.Country" class="text-danger"></span>
+			<button type="submit" class="btn btn-primary">Save</button>
+		</form>
+	</div>
+</div>

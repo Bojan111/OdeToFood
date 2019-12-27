@@ -1,0 +1,56 @@
+﻿@page
+@model FirstProject.Pages.Clients.ClientModel
+@{
+	ViewData["Title"] = "Client";
+}
+
+<h1>Client</h1>
+
+<form method="get">
+	<div class="form-group">
+		<div class="input-group mb-3">
+			<input type="search" class="form-control" placeholder="searchform" asp-for="SearchTerm">
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+			</div>
+		</div>
+	</div>
+</form>
+
+<h1>List</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>LastName</th>
+			<th>City</th>
+			<th>Country</th>
+		</tr>
+	</thead>
+	@foreach (var item in Model.Clients)
+	{
+
+<tr>
+	<td>@item.Id</td>
+
+
+	<td>@item.Name</td>
+
+
+	<td>@item.LastName</td>
+
+
+	<td>@item.City</td>
+	<td>@item.Country</td>
+	<td>
+		<a class="btn btn-primary" asp-page="/Clients/Detail" asp-route-Id="@item.Id"><i class="fas fa-search"></i></a>
+		<a class="btn btn-primary" asp-page="./Edit" asp-route-Id="@item.Id"><i class="fas fa-edit"></i></a>
+	</td>
+
+</tr>
+	}
+</table>
+
+<a class="btn btn-success" asp-page="./Add">Add Clients</a>
+
