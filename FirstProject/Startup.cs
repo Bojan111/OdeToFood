@@ -2,18 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ClientData;
-using Customers;
-using ICustomersssss;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ClientData;
 using OdeToFoodData;
 using Users;
+using Microsoft.EntityFrameworkCore;
 
 namespace FirstProject
 {
@@ -30,11 +27,8 @@ namespace FirstProject
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddRazorPages();
-			services.AddSingleton <IRestaurantData, RestaurantDataInMemory>();
-			services.AddSingleton<ICustomers, CustomerMembers>();
-			services.AddSingleton<IVehicleType, VehicleMembers>();
-			services.AddSingleton<IUsers, UserData>();
-			services.AddSingleton<IClient, ClientData.ClientData >();
+			services.AddDbContextPool<OdeToFoodDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("connStr")));
+			services.AddScoped<IRestaurantData, RestorauntDataSql>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

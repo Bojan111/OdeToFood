@@ -29,24 +29,6 @@
 						<li class="nav-item">
 							<a class="nav-link text-dark" asp-area="" asp-page="/Restaurants/List">Restaurants</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-page="/Customers/CustomerPage">Customers</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-page="/Clients/Client">Client</a>
-						</li>
-						<li class="nav-item">
-							<div class="btn-group">
-								<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-									More
-								</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" asp-area="" asp-page="/Users">Users</a>
-									<a class="dropdown-item" asp-area="" asp-page="/UsersDetails">UsersDetails</a>
-
-								</div>
-							</div>
-						</li>
 
 					</ul>
 				</div>
@@ -61,6 +43,7 @@
 
 	<footer class="border-top footer text-muted">
 		<div class="container">
+			@RenderSection("footer", false);
 			&copy; 2019 - FirstProject - <a asp-area="" asp-page="/Privacy">Privacy</a>
 		</div>
 	</footer>

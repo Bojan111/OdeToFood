@@ -5,16 +5,16 @@
 }
 
 
-	<form  method="get">
-		<div class="form-group">
-			<div class="input-group mb-3">
-				<input type="search" class="form-control" placeholder="searchform" asp-for="SearchTerm">
-				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
-				</div>
+<form method="get">
+	<div class="form-group">
+		<div class="input-group mb-3">
+			<input type="search" class="form-control" placeholder="searchform" asp-for="SearchTerm">
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
 			</div>
 		</div>
-	</form>
+	</div>
+</form>
 
 
 <h1>List</h1>
@@ -24,7 +24,6 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>Id</th>
 			<th>Name</th>
 			<th>Location</th>
 			<th>Culsine</th>
@@ -34,26 +33,28 @@
 	{
 
 		<tr>
-			<td>@item.Id</td>
-	
-	
 			<td>@item.Name</td>
-		
-	
+
+
 			<td>@item.Location</td>
 
-	
+
 			<td>@item.Culsine</td>
 			<td>
 				<a class="btn btn-primary" asp-page="/Restaurants/Details" asp-route-Id="@item.Id"><i class="fas fa-search"></i></a>
 				<a class="btn btn-primary" asp-page="./Edit" asp-route-Id="@item.Id"><i class="fas fa-edit"></i></a>
 			</td>
-	
+
 		</tr>
 	}
 </table>
 <a class="btn btn-success" asp-page="./Add">Add Restaurants</a>
 
+@section footer {
+	<div>
+		@Model.Message
+	</div>
+}
 
 
 

@@ -38,7 +38,7 @@ namespace FirstProject.Pages.Restaurants
 				restaurantData.Update(Restourant);
 				restaurantData.Commit();
 				TempData["Message"] = "The restaurant is updated";
-				return RedirectToPage("./Details", new { Id = Restourant.Id});
+				return RedirectToPage("./Details", new { id = Restourant.Id});
 			}
 			
 			CulsineTypes = htmlHelper.GetEnumSelectList<CulsineType>();

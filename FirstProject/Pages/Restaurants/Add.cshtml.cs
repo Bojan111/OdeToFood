@@ -23,18 +23,39 @@ namespace FirstProject.Pages.Restaurants
 		}
 		[BindProperty]
 		public Restoraunt Restoraunt { get; set; }
-        public void OnGet(int id)
+        public IActionResult OnGet(int? id)
         {
-			Restoraunt = restaurantData.GetRestoraunt(id);
+			if (id.HasValue)
+			{
+				Restoraunt = restaurantData.GetRestoraunt(id.Value);
+				if (Restoraunt == null)
+				{
+					return RedirectToPage("./NotFound");
+				}
+			}
+			else
+			{
+				Restoraunt = new Restoraunt();
+			}
 			CulsineTypes = htmlHelper.GetEnumSelectList<OdeToFood.CulsineType>();
-        }
+			return Page();
+		}
 		public IActionResult OnPost()
 		{
 			if (ModelState.IsValid)
 			{
-				Restoraunt = restaurantData.Add(Restoraunt);
-
-				return RedirectToPage("./Details", new { Id = Restoraunt.Id });
+				if (Restoraunt.Id == 0)
+				{
+					Restoraunt = restaurantData.Add(Restoraunt);
+					TempData["Message"] = "The Object is created";
+				}
+				else
+				{
+					Restoraunt = restaurantData.Update(Restoraunt);
+					TempData["Message"] = "The Object is updated";
+				}
+				restaurantData.Commit();
+				return RedirectToPage("./List");
 			}
 			CulsineTypes = htmlHelper.GetEnumSelectList<OdeToFood.CulsineType>();
 			return Page();
