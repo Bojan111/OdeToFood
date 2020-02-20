@@ -13,13 +13,9 @@ namespace ClassCore
 		[StringLength(10)]
 		public string Name { get; set; }
 		[Required]
-		//[Display(Name ="Lokacija")] //menja ga ime na lokaciju
 		public string Location { get; set; }
 		[Required]
 		public CulsineType Culsine { get; set; }
-
-
-		//public string Photo { get; set; }
 
 		
 	}
