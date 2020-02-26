@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OdeToFoodData;
-using Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace FirstProject
@@ -26,6 +25,7 @@ namespace FirstProject
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddMvc();
 			services.AddRazorPages();
 			services.AddDbContextPool<OdeToFoodDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("connStr")));
 			services.AddScoped<IRestaurantData, RestorauntDataSql>();
@@ -55,6 +55,16 @@ namespace FirstProject
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapRazorPages();
+				endpoints.MapControllerRoute(
+				name: "restaurant",
+				pattern: "{controller=Home}/{action=Index}/{id?}"
+				);
+				endpoints.MapControllerRoute(
+					name: "default",
+					pattern: "{controller=Home}/{action=Index}/{id?}"
+					);
+
+
 			});
 		}
 	}

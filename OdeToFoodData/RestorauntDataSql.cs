@@ -12,7 +12,7 @@ namespace OdeToFoodData
 		private readonly OdeToFoodDbContext odeToFoodDbContext;
 
 		public RestorauntDataSql(OdeToFoodDbContext odeToFoodDbContext)
-			{
+		{
 			this.odeToFoodDbContext = odeToFoodDbContext;
 		}
 
@@ -25,6 +25,16 @@ namespace OdeToFoodData
 		public int Commit()
 		{
 			return odeToFoodDbContext.SaveChanges();
+		}
+
+		public Restoraunt Delete(int id)
+		{
+			var temp = odeToFoodDbContext.Restaurants.SingleOrDefault(r => r.Id == id);
+			if(temp != null)
+			{
+				odeToFoodDbContext.Restaurants.Remove(temp);
+			}
+			return temp;
 		}
 
 		public IEnumerable<Restoraunt> GetAll(string name = null)

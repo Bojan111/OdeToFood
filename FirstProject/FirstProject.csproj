@@ -15,8 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClassCore\OdeToFood.csproj" />
     <ProjectReference Include="..\OdeToFoodData\OdeToFoodData.csproj" />
-    <ProjectReference Include="..\Users\Users.csproj" />
+    <ProjectReference Include="..\OdeToFoodType\OdeToFoodType.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewComponents\" />
   </ItemGroup>
 
 </Project>

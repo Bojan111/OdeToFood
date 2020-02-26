@@ -1,0 +1,43 @@
+﻿@model ClassCore.Restoraunt
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<table class="table table-bordered col-6">
+    <tr>
+        <td class="font-weight-bold">
+            Restaurant Id
+        </td>
+        <td>
+            @Model.Id
+        </td>
+    </tr>
+    <tr>
+        <td class="font-weight-bold">
+            Name
+        </td>
+        <td>
+            @Model.Name
+        </td>
+    </tr>
+    <tr>
+        <td class="font-weight-bold">
+            Location
+        </td>
+        <td>
+            @Model.Location
+        </td>
+    </tr>
+    <tr>
+        <td class="font-weight-bold">
+            Culsine
+        </td>
+        <td>
+            @Model.Culsine
+        </td>
+    </tr>
+</table>
+
+<a asp-controller="RestaurantsMvc" asp-action="Index" class="btn btn-primary">Back</a>

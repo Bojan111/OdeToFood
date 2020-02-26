@@ -49,6 +49,16 @@ namespace OdeToFoodData
 			return 0;
 		}
 
+		public Restoraunt Delete(int id)
+		{
+			var temp = restoraunts.SingleOrDefault(r => r.Id == id);
+			if(temp != null)
+			{
+				restoraunts.Remove(temp);
+			}
+			return temp;
+		}
+
 		public IEnumerable<Restoraunt> GetAll(string name = null)
 			{
 				return restoraunts.Where(r => string.IsNullOrEmpty(name) || r.Name.ToLower().StartsWith(name.ToLower())).OrderBy(r => r.Id);

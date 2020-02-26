@@ -1,5 +1,5 @@
-﻿@page
-@model FirstProject.ListModel
+﻿
+@model FirstProject.Models.RestaurantsIndexViewModel
 @{
 	ViewData["Title"] = "List";
 }
@@ -17,7 +17,7 @@
 </form>
 
 
-<h1>List</h1>
+<h1>Restaurants MVC List</h1>
 <div>
 	@Model.Message
 </div>
@@ -41,24 +41,19 @@
 
 			<td>@item.Culsine</td>
 			<td>
-				<a class="btn btn-primary" asp-page="/Restaurants/Details" asp-route-Id="@item.Id"><i class="fas fa-search"></i></a>
-				<a class="btn btn-primary" asp-page="./Edit" asp-route-Id="@item.Id"><i class="fas fa-edit"></i></a>
-				<a class="btn btn-primary" asp-page="./Delete" asp-route-Id="@item.Id"><i class="fas fa-trash"></i></a>
+				<a class="btn btn-primary" asp-action="Detail" asp-route-Id="@item.Id"><i class="fas fa-search"></i></a>
+				<a class="btn btn-primary" asp-action="Edit" asp-route-Id="@item.Id"><i class="fas fa-edit"></i></a>
+				<a class="btn btn-primary" asp-action="Delete" asp-route-Id="@item.Id"><i class="fas fa-trash"></i></a>
 
 			</td>
 
 		</tr>
 	}
 </table>
-<a class="btn btn-success" asp-page="./Add">Add Restaurants</a>
+<a class="btn btn-success" asp-controller="RestaurantsMvc" asp-action="Edit">Add Restaurants</a>
 
 @section footer {
 	<div>
 		@Model.Message
 	</div>
 }
-
-
-
-
-

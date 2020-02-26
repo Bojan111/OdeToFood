@@ -16,5 +16,7 @@ namespace OdeToFoodData
 		Restoraunt Add(Restoraunt restoraunt);
 
 		int Commit();
+
+		Restoraunt Delete(int id);
 	}
 }

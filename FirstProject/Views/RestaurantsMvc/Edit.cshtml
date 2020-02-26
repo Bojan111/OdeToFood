@@ -1,0 +1,29 @@
+﻿@model FirstProject.Models.RestaurantsEditIndexViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<form method="post">
+    <input type="hidden" asp-for="Restaurant.Id" />
+    <div class="form-group">
+        <label asp-for="Restaurant.Name"></label>
+        <input class="form-control" asp-for="Restaurant.Name" />
+        <span class="text-danger" asp-validation-for="Restaurant.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Restaurant.Location"></label>
+        <input class="form-control" asp-for="Restaurant.Location" />
+        <span class="text-danger" asp-validation-for="Restaurant.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Restaurant.Culsine"></label>
+        <select class="form-control" asp-for="Restaurant.Culsine" asp-items="@Model.CulsineTypes">
+            <option value="">Culsine Type</option>
+        </select>
+        <span class="text-danger" asp-validation-for="Restaurant.Culsine"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
